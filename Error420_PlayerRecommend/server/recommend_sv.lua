@@ -27,13 +27,7 @@ local function sendToDiscord(playerName, targetDiscordName, targetName, recommen
         }
     }
 
-    PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers)
-        if err ~= 200 and err ~= 201 then
-            print(('^1[ERROR] Failed to send webhook! HTTP Code: %s | Response: %s^0'):format(err, text))
-        else
-            print('^2[INFO] Recommendation successfully sent to Discord!^0')
-        end
-    end, 'POST', json.encode({embeds = embed}), {['Content-Type'] = 'application/json'})
+    PerformHttpRequest(DISCORD_WEBHOOK, function(err, text, headers) end, 'POST', json.encode({embeds = embed}), {['Content-Type'] = 'application/json'})
 end
 
 RegisterNetEvent('Error420_PlayerRecommend:send', function(targetId, recommendation)
